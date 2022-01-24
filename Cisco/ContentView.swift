@@ -7,7 +7,6 @@
 
 import SwiftUI
 import KeychainAccess
-import Commands
 import ShellOut
 
 struct ContentView: View {
