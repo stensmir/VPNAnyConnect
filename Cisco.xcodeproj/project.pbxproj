@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780424A427A7126A00B3B104 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 780424A327A7126A00B3B104 /* Main.storyboard */; };
+		780424A627A714FD00B3B104 /* NSImage+Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780424A527A714FD00B3B104 /* NSImage+Tint.swift */; };
+		780424A927A727F900B3B104 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 780424A827A727F900B3B104 /* LaunchAtLogin */; };
 		783A0EAA279C96F50005B392 /* CiscoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A0EA9279C96F50005B392 /* CiscoApp.swift */; };
 		783A0EAC279C96F50005B392 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A0EAB279C96F50005B392 /* ContentView.swift */; };
 		783A0EAE279C96F60005B392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 783A0EAD279C96F60005B392 /* Assets.xcassets */; };
@@ -16,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		780424A327A7126A00B3B104 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		780424A527A714FD00B3B104 /* NSImage+Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Tint.swift"; sourceTree = "<group>"; };
 		783A0EA6279C96F50005B392 /* Cisco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cisco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		783A0EA9279C96F50005B392 /* CiscoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiscoApp.swift; sourceTree = "<group>"; };
 		783A0EAB279C96F50005B392 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,6 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				783A0EBA279C9AEF0005B392 /* KeychainAccess in Frameworks */,
+				780424A927A727F900B3B104 /* LaunchAtLogin in Frameworks */,
 				78C00AC5279F0380008097C9 /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +65,9 @@
 			children = (
 				783A0EBB279CAA030005B392 /* Info.plist */,
 				783A0EA9279C96F50005B392 /* CiscoApp.swift */,
+				780424A527A714FD00B3B104 /* NSImage+Tint.swift */,
 				783A0EAB279C96F50005B392 /* ContentView.swift */,
+				780424A327A7126A00B3B104 /* Main.storyboard */,
 				783A0EAD279C96F60005B392 /* Assets.xcassets */,
 				783A0EB2279C96F60005B392 /* Cisco.entitlements */,
 				783A0EAF279C96F60005B392 /* Preview Content */,
@@ -85,6 +93,7 @@
 				783A0EA2279C96F50005B392 /* Sources */,
 				783A0EA3279C96F50005B392 /* Frameworks */,
 				783A0EA4279C96F50005B392 /* Resources */,
+				780424AA27A7299800B3B104 /* Launch at Login Helper */,
 			);
 			buildRules = (
 			);
@@ -94,6 +103,7 @@
 			packageProductDependencies = (
 				783A0EB9279C9AEF0005B392 /* KeychainAccess */,
 				78C00AC4279F0380008097C9 /* ShellOut */,
+				780424A827A727F900B3B104 /* LaunchAtLogin */,
 			);
 			productName = Cisco;
 			productReference = 783A0EA6279C96F50005B392 /* Cisco.app */;
@@ -126,6 +136,7 @@
 			packageReferences = (
 				783A0EB8279C9AEF0005B392 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				78C00AC3279F037F008097C9 /* XCRemoteSwiftPackageReference "ShellOut" */,
+				780424A727A727F900B3B104 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 783A0EA7279C96F50005B392 /* Products */;
 			projectDirPath = "";
@@ -141,12 +152,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780424A427A7126A00B3B104 /* Main.storyboard in Resources */,
 				783A0EB1279C96F60005B392 /* Preview Assets.xcassets in Resources */,
 				783A0EAE279C96F60005B392 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		780424AA27A7299800B3B104 /* Launch at Login Helper */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Launch at Login Helper";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		783A0EA2279C96F50005B392 /* Sources */ = {
@@ -155,6 +188,7 @@
 			files = (
 				783A0EAC279C96F50005B392 /* ContentView.swift in Sources */,
 				783A0EAA279C96F50005B392 /* CiscoApp.swift in Sources */,
+				780424A627A714FD00B3B104 /* NSImage+Tint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,18 +322,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cisco/Preview Content\"";
-				DEVELOPMENT_TEAM = 72F3S9V8JP;
+				DEVELOPMENT_TEAM = 3Q569273ND;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cisco/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cisco;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vpn.cisco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -320,18 +355,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cisco/Preview Content\"";
-				DEVELOPMENT_TEAM = 72F3S9V8JP;
+				DEVELOPMENT_TEAM = 3Q569273ND;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cisco/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cisco;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vpn.cisco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -364,6 +400,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		780424A727A727F900B3B104 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		783A0EB8279C9AEF0005B392 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -383,6 +427,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		780424A827A727F900B3B104 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 780424A727A727F900B3B104 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
 		783A0EB9279C9AEF0005B392 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 783A0EB8279C9AEF0005B392 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
