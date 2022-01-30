@@ -8,47 +8,87 @@
 import SwiftUI
 import KeychainAccess
 import ShellOut
+import LaunchAtLogin
 
 struct ContentView: View {
 	
 	@State private var pass: String = ""
 	@State private var showPassword: Bool = false
 	@State private var isConnect = false
-	@State private var hideButtonTitle = "Показать"
 	@State private var connectButtonTitle = "Подключить"
 	private let keychain = Keychain(service: "com.vpn.cisco")
 	private let staticTitle = "Введите свой пароль"
-
+	
 	var body: some View {
-		VStack {
-			Text("Ваш пароль:")
-			HStack {
-				if showPassword {
-					
-					TextField(staticTitle, text: $pass)
-						.frame(width: 120, height: 30)
-				} else {
-					SecureField(staticTitle, text: $pass)
-						.frame(width: 120, height: 30)
-					
+		VStack() {
+			VStack {
+				LaunchAtLogin.Toggle {
+					Text("Запустить при старте")
 				}
-				Button(hideButtonTitle) {
-					showPassword.toggle()
-					hideButtonTitle = showPassword ? "Скрыть" : "Показать"
+				HStack {
+					if showPassword {
+						
+						TextField(staticTitle, text: $pass)
+							.frame(width: 140, height: 30)
+					} else {
+						SecureField(staticTitle, text: $pass)
+							.frame(width: 140, height: 30)
+						
+					}
+					Button {
+						showPassword.toggle()
+					} label: {
+						let image = showPassword ? "closeEye" : "openEye"
+						HStack(alignment: .center, spacing: 5.0) {
+							Image(image)
+								.resizable()
+								.renderingMode(.template)
+								.colorMultiply(.white)
+								.frame(width: 20, height: 20, alignment: .center)
+						}
+					}
+					Button {
+						keychain["password"] = pass
+					} label: {
+						HStack(alignment: .center, spacing: 5.0) {
+							Image(systemName: "checkmark.circle")
+								.resizable()
+								.renderingMode(.template)
+								.colorMultiply(.white)
+								.frame(width: 15, height: 15, alignment: .center)
+						}
+					}
 				}
 				
-				Button("Сохранить") {
-					keychain["password"] = pass
+			}
+			Spacer().frame(height: 10)
+			HStack {
+				Button(connectButtonTitle) {
+					isConnect ? close() : runScript()
+					connectButtonTitle = isConnect ? "Отключить" : "Подключить"
 				}
+				Circle()
+					.fill(isConnect ? .green : .red)
+					.frame(width: 10, height: 10)
 			}
-			
-			Button(connectButtonTitle) {
-				isConnect ? close() : runScript()
+			Spacer().frame(height: 10)
+			Divider().frame(width: 230, height: 1, alignment: .center)
+			Spacer().frame(height: 10)
+			Button("Закрыть приложение") {
+				NSApplication.shared.terminate(self)
+			}
+		}
+		.padding(10)
+		.onAppear {
+			do {
+				let connecting = try shellOut(to: "/opt/cisco/anyconnect/bin/vpn status | awk 'NR == 6{print $4; exit}'")
+				isConnect = connecting != "Disconnected"
 				connectButtonTitle = isConnect ? "Отключить" : "Подключить"
+				debugPrint(connecting)
+			} catch {
+				debugPrint(error)
 			}
-		}.onAppear {
 			pass = keychain["password"] ?? ""
-			
 		}
 	}
 	
