@@ -12,8 +12,10 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 	var statusItem: NSStatusItem?
 	var popOver = NSPopover()
+	static private(set) var instance: AppDelegate! = nil
 	
 	func applicationDidFinishLaunching(_ notification: Notification) {
+		AppDelegate.instance = self
 		let menuView = ContentView()
 		popOver.behavior = .transient
 		popOver.animates = true
@@ -26,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		
 		if let button = statusItem?.button {
-			button.image = NSImage(named: "anyconnect")?.tinting(with: .white)
+			button.image = NSImage(systemSymbolName: menuView.hasConnect() ? "shield.fill" : "shield", accessibilityDescription: nil)?.tinting(with: .white)
 			button.action = #selector(toogle)
 		}
 		NSApp.activate(ignoringOtherApps: true)
