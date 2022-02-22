@@ -1,0 +1,20 @@
+strings:
+  inputs: Cisco/Resources/Files/en.lproj
+  outputs:
+    - templateName: structured-swift5
+      params:
+        enumName: Loc
+        publicAccess: 1
+      output: Cisco/Resources/Strings+Generated.swift
+
+xcassets:
+  inputs:
+    - Cisco/Resources/Files/Colors.xcassets
+    - Cisco/Resources/Files/Images.xcassets
+  outputs:
+    - templateName: swift5
+      params:
+        forceProvidesNamespaces: false
+        publicAccess: 1
+        bundle: Bundle.coreModule
+      output: Cisco/Resources/XCAssets+Generated.swift

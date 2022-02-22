@@ -15,6 +15,12 @@
 		783A0EAE279C96F60005B392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 783A0EAD279C96F60005B392 /* Assets.xcassets */; };
 		783A0EB1279C96F60005B392 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 783A0EB0279C96F60005B392 /* Preview Assets.xcassets */; };
 		783A0EBA279C9AEF0005B392 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 783A0EB9279C9AEF0005B392 /* KeychainAccess */; };
+		78997FB227C54118001379FC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997FA827C54118001379FC /* Strings+Generated.swift */; };
+		78997FB327C54118001379FC /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78997FA927C54118001379FC /* XCAssets+Generated.swift */; };
+		78997FB427C54118001379FC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78997FAB27C54118001379FC /* Colors.xcassets */; };
+		78997FB527C54118001379FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78997FAC27C54118001379FC /* Images.xcassets */; };
+		78997FC127C544A7001379FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78997FBF27C544A7001379FC /* Localizable.strings */; };
+		78997FC527C544B2001379FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78997FC327C544B2001379FC /* Localizable.strings */; };
 		78C00AC5279F0380008097C9 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 78C00AC4279F0380008097C9 /* ShellOut */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +34,12 @@
 		783A0EB0279C96F60005B392 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		783A0EB2279C96F60005B392 /* Cisco.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cisco.entitlements; sourceTree = "<group>"; };
 		783A0EBB279CAA030005B392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		78997FA827C54118001379FC /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		78997FA927C54118001379FC /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		78997FAB27C54118001379FC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		78997FAC27C54118001379FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		78997FC027C544A7001379FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		78997FC427C544B2001379FC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,7 @@
 				780424A327A7126A00B3B104 /* Main.storyboard */,
 				783A0EAD279C96F60005B392 /* Assets.xcassets */,
 				783A0EB2279C96F60005B392 /* Cisco.entitlements */,
+				78997FA627C54118001379FC /* Resources */,
 				783A0EAF279C96F60005B392 /* Preview Content */,
 			);
 			path = Cisco;
@@ -81,6 +94,43 @@
 				783A0EB0279C96F60005B392 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		78997FA627C54118001379FC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78997FA827C54118001379FC /* Strings+Generated.swift */,
+				78997FA927C54118001379FC /* XCAssets+Generated.swift */,
+				78997FAA27C54118001379FC /* Files */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		78997FAA27C54118001379FC /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				78997FC227C544B2001379FC /* ru.lproj */,
+				78997FBE27C544A7001379FC /* en.lproj */,
+				78997FAB27C54118001379FC /* Colors.xcassets */,
+				78997FAC27C54118001379FC /* Images.xcassets */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		78997FBE27C544A7001379FC /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				78997FBF27C544A7001379FC /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		78997FC227C544B2001379FC /* ru.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				78997FC327C544B2001379FC /* Localizable.strings */,
+			);
+			path = ru.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +181,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 783A0E9D279C96F50005B392;
 			packageReferences = (
@@ -153,6 +204,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				780424A427A7126A00B3B104 /* Main.storyboard in Resources */,
+				78997FB527C54118001379FC /* Images.xcassets in Resources */,
+				78997FC127C544A7001379FC /* Localizable.strings in Resources */,
+				78997FB427C54118001379FC /* Colors.xcassets in Resources */,
+				78997FC527C544B2001379FC /* Localizable.strings in Resources */,
 				783A0EB1279C96F60005B392 /* Preview Assets.xcassets in Resources */,
 				783A0EAE279C96F60005B392 /* Assets.xcassets in Resources */,
 			);
@@ -186,13 +241,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78997FB227C54118001379FC /* Strings+Generated.swift in Sources */,
 				783A0EAC279C96F50005B392 /* ContentView.swift in Sources */,
+				78997FB327C54118001379FC /* XCAssets+Generated.swift in Sources */,
 				783A0EAA279C96F50005B392 /* CiscoApp.swift in Sources */,
 				780424A627A714FD00B3B104 /* NSImage+Tint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		78997FBF27C544A7001379FC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78997FC027C544A7001379FC /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		78997FC327C544B2001379FC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78997FC427C544B2001379FC /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		783A0EB3279C96F60005B392 /* Debug */ = {

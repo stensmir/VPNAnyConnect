@@ -12,6 +12,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 	var statusItem: NSStatusItem?
 	var popOver = NSPopover()
+	
 	static private(set) var instance: AppDelegate! = nil
 	
 	func applicationDidFinishLaunching(_ notification: Notification) {
