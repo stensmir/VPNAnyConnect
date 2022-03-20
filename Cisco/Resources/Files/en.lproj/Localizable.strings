@@ -5,3 +5,6 @@
 "launchWithStart" = "Launch app with start";
 "enterYourPassword" = "Enter you password";
 "enterYourServer" = "Server address";
+"enterName" = "Name";
+"enterCode" = "Secret";
+"needAuth" = "For One-time codes";

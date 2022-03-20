@@ -5,3 +5,6 @@
 "launchWithStart" = "Запустить при старте";
 "enterYourPassword" = "Введите свой пароль";
 "enterYourServer" = "Адрес сервера";
+"enterName" = "Имя";
+"enterCode" = "Код";
+"needAuth" = "Для одноразовых паролей";

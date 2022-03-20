@@ -14,6 +14,10 @@ public enum Loc {
   public static let connect = Loc.tr("Localizable", "connect")
   /// Disconnect
   public static let disconnect = Loc.tr("Localizable", "disconnect")
+  /// Secret
+  public static let enterCode = Loc.tr("Localizable", "enterCode")
+  /// Name
+  public static let enterName = Loc.tr("Localizable", "enterName")
   /// Enter you password
   public static let enterYourPassword = Loc.tr("Localizable", "enterYourPassword")
   /// Server address
@@ -22,6 +26,8 @@ public enum Loc {
   public static let exit = Loc.tr("Localizable", "exit")
   /// Launch app with start
   public static let launchWithStart = Loc.tr("Localizable", "launchWithStart")
+  /// For One-time codes
+  public static let needAuth = Loc.tr("Localizable", "needAuth")
   /// OK
   public static let ok = Loc.tr("Localizable", "ok")
 }

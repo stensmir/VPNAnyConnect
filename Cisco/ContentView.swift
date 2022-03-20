@@ -18,6 +18,10 @@ struct ContentView: View {
 	@State private var isConnect = false
 	@State private var connectButtonTitle = Loc.connect
 	@State private var isLoading = false
+    @State private var twoFA = false
+    @State private var userName: String = ""
+    @State private var userCode: String = ""
+    
 	private let keychain = Keychain(service: "com.vpn.cisco")
 	
 	var body: some View {
@@ -75,6 +79,41 @@ struct ContentView: View {
 				}
 			}
 			Spacer().frame(height: 10)
+            Divider().frame(width: 230, height: 1, alignment: .center)
+            VStack {
+                Label(Loc.needAuth, image: "")
+                HStack {
+                    TextField(Loc.enterName, text: $userName)
+                        .frame(width: 140, height: 30)
+                    Button {
+                        twoFA = true
+                        keychain["name"] = userName
+                    } label: {
+                        HStack(alignment: .center) {
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .renderingMode(.template)
+                                .colorMultiply(.white)
+                                .frame(width: 14, height: 14, alignment: .center)
+                        }
+                    }
+                }
+                HStack {
+                    SecureField(Loc.enterCode, text: $userCode)
+                        .frame(width: 140, height: 30)
+                    Button {
+                        keychain["secret"] = userCode
+                    } label: {
+                        HStack(alignment: .center) {
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .renderingMode(.template)
+                                .colorMultiply(.white)
+                                .frame(width: 14, height: 14, alignment: .center)
+                        }
+                    }
+                }
+            }
 			HStack {
 				Button(connectButtonTitle) {
 					isConnect ? close() : runScript()
@@ -115,9 +154,12 @@ struct ContentView: View {
 			hasConnect()
 			address = keychain["address"] ?? ""
 			pass = keychain["password"] ?? ""
+            userName = keychain["name"] ?? ""
+            userCode = keychain["secret"] ?? ""
+            twoFA = !userName.isEmpty
 		}
 	}
-	
+    
 	@discardableResult
 	public func hasConnect() -> Bool {
 		do {
@@ -148,8 +190,15 @@ struct ContentView: View {
 	
 	func runScript() {
 		do {
-			let output = try shellOut(to: "printf \"\n\(pass)\" | /opt/cisco/anyconnect/bin/vpn -s connect vpn-ati-555.ati.su")
-			guard output.contains("error:") else {
+            let output: String
+            if twoFA {
+                let code = try CodeGenerator(name: userName, code: userCode).generate()
+                output = try shellOut(to: "printf \"\n\(pass)\n\(code)\" | /opt/cisco/anyconnect/bin/vpn -s connect \(address)")
+            } else {
+                output = try shellOut(to: "printf \"\n\(pass)\" | /opt/cisco/anyconnect/bin/vpn -s connect \(address)")
+            }
+            
+			guard output.contains("Login failed") || output.contains("error:") else {
 				isConnect.toggle()
 				return
 			}
